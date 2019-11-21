@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 proj_server_bin="hotstuff-app"
 proj_server_path="/home/ted/hot-stuff/$proj_server_bin"
@@ -204,7 +204,7 @@ function _remote_fetch {
 
 function start_all {
     local workdir="$1"
-    local tmpldir="$workdir/$template_dir/"
+    local tmpldir="$workdir/$template_dir"
     mkdir "$workdir" > /dev/null 2>&1 || die "workdir already exists"
     rm -rf "$tmpldir"
     mkdir "$tmpldir"
@@ -234,7 +234,7 @@ function start_all {
         for conf in "${extra_conf_[@]}"; do
             cp "$conf" "$node_tmpldir/"
             extra_conf+=($(basename "$conf"))
-            copy_file "$copy_to_remote_pat" "$tmpldir/$conf" "$node_ip" "$rworkdir"
+            copy_file "$copy_to_remote_pat" "$node_tmpldir/$conf" "$ip" "$rworkdir"
         done
         echo "Starting $rid @ $ip, $pport and $cport"
         _remote_load "$workdir" "$rworkdir" "$ip" "$rid" "${extra_conf[@]}"
