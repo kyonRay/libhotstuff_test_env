@@ -7,10 +7,10 @@ source "$base/conf.sh"
 
 peer_list="./nodes.txt"
 client_list="./clients.txt"
-copy_to_remote_pat="rsync -e 'ssh -o UserKnownHostsFile=$keyscan -i $ec2_pem' -avz <local_path> <remote_user>@<remote_ip>:<remote_path>"
-copy_from_remote_pat="rsync -e 'ssh -o UserKnownHostsFile=$keyscan -i $ec2_pem' -avz <remote_user>@<remote_ip>:<remote_path> <local_path>"
+copy_to_remote_pat="rsync -e 'ssh' -avz <local_path> <remote_user>@<remote_ip>:<remote_path>"
+copy_from_remote_pat="rsync -e 'ssh' -avz <remote_user>@<remote_ip>:<remote_path> <local_path>"
 run_remote_pat="$run_client_remote_pat"
-exe_remote_pat="ssh -o UserKnownHostsFile=$keyscan -i '$ec2_pem' <remote_user>@<remote_ip> bash"
+exe_remote_pat="ssh <remote_user>@<remote_ip> bash"
 
 run="$scripts_base/run_client.sh"
 

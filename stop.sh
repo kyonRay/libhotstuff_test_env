@@ -7,4 +7,4 @@ sleep 5
 ./run_ec2.sh stop "$srv"
 ./run_ec2.sh reset "$srv"
 ./run_ec2_client.sh reset "$cli"
-cat "$cli"/*.log |  python exp/thr_hist.py | tee "$cli/results"
+cat "$cli"/*.log |  python3 exp/thr_hist.py | tee "$cli/results"
