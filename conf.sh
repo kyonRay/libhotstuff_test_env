@@ -16,4 +16,4 @@ ec2_user=root
 ec2_pem="$base/VMware1ware.pem"
 
 run_server_remote_pat="cd \"<rworkdir>\"; '$proj_server_path' --conf \"hotstuff.gen-sec<node_id>.conf\" --notls"
-run_client_remote_pat="cd \"<rworkdir>\"; '$proj_client_path' --idx 1 --cid <node_id> --iter -1 --max-async 175"
+run_client_remote_pat="cd \"<rworkdir>\"; '$proj_client_path' --idx 1 --cid <node_id> --iter -1 --max-async 200"

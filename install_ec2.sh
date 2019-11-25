@@ -8,11 +8,11 @@ source "$base/conf.sh"
 function myssh {
     h="$1"
     shift 1
-    ssh -o UserKnownHostsFile="$keyscan" -i "$ec2_pem" "$h" "$@"
+    ssh -o StrictHostKeyChecking=accept-new "$h" "$@"
 }
 
 function myrsync {
-    rsync -avP -e "ssh -o UserKnownHostsFile=$keyscan -i '$ec2_pem'" "$@"
+    rsync -avP -e "ssh -o StrictHostKeyChecking=accept-new" "$@"
 }
 
 rm -rf ec2_batch_log
